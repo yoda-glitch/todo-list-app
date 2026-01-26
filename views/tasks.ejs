@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Tasks - Todo App</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>✅ My Todo List</h1>
+      <div class="user-info">
+        <span>👤 <%= user.username %></span>
+        <a href="/auth/logout" class="btn btn-logout">Logout</a>
+      </div>
+    </div>
+
+    <!-- Add New Task Form -->
+    <div class="add-task-box">
+      <form action="/tasks" method="POST" class="add-task-form">
+        <input 
+          type="text" 
+          name="title" 
+          placeholder="What do you need to do?" 
+          required
+          maxlength="200"
+        >
+        <button type="submit" class="btn btn-add">+ Add Task</button>
+      </form>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="filter-buttons">
+      <a href="/tasks?filter=all" class="btn-filter <%= filter === 'all' ? 'active' : '' %>">
+        All
+      </a>
+      <a href="/tasks?filter=pending" class="btn-filter <%= filter === 'pending' ? 'active' : '' %>">
+        Pending
+      </a>
+      <a href="/tasks?filter=completed" class="btn-filter <%= filter === 'completed' ? 'active' : '' %>">
+        Completed
+      </a>
+    </div>
+
+    <!-- Tasks List -->
+    <div class="tasks-list">
+      <% if (tasks.length === 0) { %>
+        <div class="no-tasks">
+          <p>📭 No tasks found!</p>
+          <% if (filter !== 'all') { %>
+            <a href="/tasks">View all tasks</a>
+          <% } %>
+        </div>
+      <% } else { %>
+        <% tasks.forEach(task => { %>
+          <div class="task-item <%= task.status %>">
+            <div class="task-content">
+              <h3><%= task.title %></h3>
+              <small>Created: <%= new Date(task.createdAt).toLocaleDateString() %></small>
+            </div>
+            
+            <div class="task-actions">
+              <% if (task.status === 'pending') { %>
+                <form action="/tasks/<%= task._id %>/complete" method="POST" style="display: inline;">
+                  <button type="submit" class="btn btn-complete">✓ Complete</button>
+                </form>
+              <% } %>
+              
+              <form action="/tasks/<%= task._id %>/delete" method="POST" style="display: inline;">
+                <button type="submit" class="btn btn-delete">🗑️ Delete</button>
+              </form>
+            </div>
+          </div>
+        <% }); %>
+      <% } %>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+# .gitignore - Tells Git which files NOT to upload
+
+# Environment variables (contains secrets!)
+.env
+
+# Node modules (too big, can be reinstalled)
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test coverage
+coverage/
+
+# Build files
+dist/
+build/
+node_modules/
+.env
+logs/
+.log
+.DS_Store
+npm-debug.log
+
