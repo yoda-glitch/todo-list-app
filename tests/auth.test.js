@@ -28,22 +28,22 @@ describe('Authentication Tests', () => {
     const response = await request(app)
       .post('/auth/register')
       .send({
-        username: 'testuser',
+        username: 'testUser',
         password: 'password123'
       });
 
     expect(response.status).toBe(302); // Redirect status
     
-    const user = await User.findOne({ username: 'testuser' });
+    const user = await User.findOne({ username: 'testUser' });
     expect(user).toBeTruthy();
-    expect(user.username).toBe('testuser');
+    expect(user.username).toBe('testUser');
   });
 
   // Test: Reject duplicate username
   test('Should not register duplicate username', async () => {
     // Create first user
     await User.create({
-      username: 'testuser',
+      username: 'testUser',
       password: 'password123'
     });
 
@@ -51,8 +51,8 @@ describe('Authentication Tests', () => {
     const response = await request(app)
       .post('/auth/register')
       .send({
-        username: 'testuser',
-        password: 'differentpass'
+        username: 'testUser',
+        password: 'differentPass'
       });
 
     expect(response.status).toBe(200); // Shows register page with error
@@ -63,14 +63,14 @@ describe('Authentication Tests', () => {
   test('Should login with correct credentials', async () => {
     // Create user first
     const user = await User.create({
-      username: 'testuser',
+      username: 'testUser',
       password: 'password123'
     });
 
     const response = await request(app)
       .post('/auth/login')
       .send({
-        username: 'testuser',
+        username: 'testUser',
         password: 'password123'
       });
 
@@ -81,15 +81,15 @@ describe('Authentication Tests', () => {
   test('Should not login with wrong password', async () => {
     // Create user
     await User.create({
-      username: 'testuser',
+      username: 'testUser',
       password: 'password123'
     });
 
     const response = await request(app)
       .post('/auth/login')
       .send({
-        username: 'testuser',
-        password: 'wrongpassword'
+        username: 'testUser',
+        password: 'wrongPassword'
       });
 
     expect(response.status).toBe(200); // Shows login page with error

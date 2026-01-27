@@ -23,7 +23,7 @@ beforeEach(async () => {
 
   // Create test user
   testUser = await User.create({
-    username: 'testuser',
+    username: 'testUser',
     password: 'password123'
   });
 
@@ -32,7 +32,7 @@ beforeEach(async () => {
   await agent
     .post('/auth/login')
     .send({
-      username: 'testuser',
+      username: 'testUser',
       password: 'password123'
     });
 });
@@ -124,7 +124,7 @@ describe('Task Tests', () => {
   test('Should only show user their own tasks', async () => {
     // Create another user
     const otherUser = await User.create({
-      username: 'otheruser',
+      username: 'otherUser',
       password: 'password123'
     });
 

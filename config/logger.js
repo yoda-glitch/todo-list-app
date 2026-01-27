@@ -1,5 +1,5 @@
 // config/logger.js - Sets up logging system
-// Think of this like a diary that writes down everything that happens
+
 
 const winston = require('winston');
 const path = require('path');

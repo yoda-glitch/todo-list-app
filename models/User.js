@@ -1,5 +1,4 @@
 // models/User.js - Blueprint for User data
-// Think of this like a form that defines what a "User" looks like
 
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
@@ -11,8 +10,8 @@ const userSchema = new mongoose.Schema({
     required: [true, 'Username is required'],
     unique: true,
     trim: true, // Removes extra spaces
-    minlength: [3, 'Username must be at least 3 characters'],
-    maxlength: [30, 'Username cannot exceed 30 characters']
+    minLength: [3, 'Username must be at least 3 characters'],
+    maxLength: [30, 'Username cannot exceed 30 characters']
   },
   password: {
     type: String,

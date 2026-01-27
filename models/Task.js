@@ -1,5 +1,4 @@
 // models/Task.js - Blueprint for Task data
-// Think of this like a form that defines what a "Task" looks like
 
 const mongoose = require('mongoose');
 
@@ -9,8 +8,8 @@ const taskSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Task title is required'],
     trim: true,
-    minlength: [1, 'Task title cannot be empty'],
-    maxlength: [200, 'Task title cannot exceed 200 characters']
+    minLength: [1, 'Task title cannot be empty'],
+    maxLength: [200, 'Task title cannot exceed 200 characters']
   },
   status: {
     type: String,
@@ -23,7 +22,7 @@ const taskSchema = new mongoose.Schema({
     required: true
   }
 }, {
-  timestamps: true // Automatically adds createdAt and updatedAt
+  timestamps: true 
 });
 
 // Create index for faster queries

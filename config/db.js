@@ -1,5 +1,4 @@
 // config/db.js - Connects to MongoDB database
-// Think of this like dialing a phone number to call the database
 
 const mongoose = require('mongoose');
 require('dotenv').config();

@@ -7,7 +7,8 @@ const logger = require('../config/logger');
 exports.getTasks = async (req, res) => {
   try {
     const userId = req.session.user.id;
-    const filter = req.query.filter || 'all'; // all, pending, completed
+    const filter = req.query.filter || 'all'; 
+    // all, pending, completed
 
     let query = { userId, status: { $ne: 'deleted' } };
 
