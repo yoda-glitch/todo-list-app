@@ -1,5 +1,4 @@
 // app.js - This file CONFIGURES our application
-// Think of it like setting up the rules and roads in a city
 
 const express = require('express');
 const session = require('express-session');
@@ -42,8 +41,7 @@ app.use((req, res, next) => {
 });
 
 // ===== ROUTES =====
-// Routes = paths users can visit (like roads in a city)
-
+// Routes = paths users can visit 
 const authRoutes = require('./routes/authRoutes');
 const taskRoutes = require('./routes/taskRoutes');
 
@@ -71,19 +69,3 @@ app.use(errorHandler);
 // Export the app so server.js can use it
 module.exports = app;
 
-/*
-SIMPLE EXPLANATION:
--------------------
-1. express.json() - Understands JSON data
-2. express.urlencoded() - Understands form data
-3. express.static() - Serves CSS/images
-4. session() - Remembers who's logged in (like a name tag at an event)
-5. EJS - Template engine to create HTML pages
-6. Routes - Define what happens when users visit different URLs
-7. Error handler - Catches mistakes and shows nice error messages
-
-Think of middleware like checkpoints:
-- Every request passes through these checkpoints
-- Each checkpoint does a small job
-- Then the request continues to the route
-*/

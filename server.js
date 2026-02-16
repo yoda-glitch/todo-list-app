@@ -1,5 +1,4 @@
 // server.js - This file STARTS our application
-// Think of it like turning on the ignition of a car
 
 // Import required packages
 const app = require('./app');
@@ -18,14 +17,3 @@ app.listen(PORT, () => {
   console.log(`📝 Visit: http://localhost:${PORT}`);
 });
 
-/*
-SIMPLE EXPLANATION:
--------------------
-1. Load the app from app.js
-2. Connect to the database
-3. Start listening on a port (like opening a shop on street number 5000)
-4. When someone visits http://localhost:5000, they can use our app
-
-Think of PORT like a door number on a street. 
-Port 5000 = Our app's address
-*/

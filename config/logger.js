@@ -1,6 +1,5 @@
 // config/logger.js - Sets up logging system
 
-
 const winston = require('winston');
 const path = require('path');
 
